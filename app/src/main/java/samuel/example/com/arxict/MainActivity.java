@@ -11,19 +11,24 @@ import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity  {
 
     TabLayout tabLayout;
     ViewPager viewPager;
+    Toolbar toolbar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+         toolbar = (Toolbar) findViewById(R.id.toolbar);
+         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+         viewPager = (ViewPager) findViewById(R.id.pager);
+        if (toolbar != null) {
+            setSupportActionBar(toolbar);
+            toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
 
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
-
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        }
 
         setFragments () ;
     }
@@ -34,15 +39,13 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter customAdapter = new ViewPagerAdapter( getSupportFragmentManager()  );
 
         ArrayList<String> fragmentsNames = new ArrayList<>();
-       // fragmentsNames.add(getResources().getString(R.string.top_news));
-       // fragmentsNames.add(getResources().getString(R.string.latest_news));
-        fragmentsNames.add("fr1");
-        fragmentsNames.add("fr2");
+        fragmentsNames.add(getResources().getString(R.string.contacts));
+        fragmentsNames.add(getResources().getString(R.string.post));
 
 
         ArrayList<Fragment> fragmentsList =new ArrayList<>();
-        fragmentsList.add(new BlankFragment());
-        fragmentsList.add(new BlankFragment());
+        fragmentsList.add(new ContactsFragment());
+        fragmentsList.add(new PostsFragment());
         customAdapter.setData(fragmentsNames ,fragmentsList);
 
         viewPager.setAdapter(customAdapter);
