@@ -1,4 +1,4 @@
-package samuel.example.com.arxict.ui;
+package samuel.example.com.arxict.ui.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -13,6 +13,8 @@ import samuel.example.com.arxict.ArxictApp;
 import samuel.example.com.arxict.ConnectivityReceiver;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.adapter.ViewPagerAdapter;
+import samuel.example.com.arxict.ui.fragment.ContactsFragment;
+import samuel.example.com.arxict.ui.fragment.PostsFragment;
 
 import static samuel.example.com.arxict.utilities.showSnackbar;
 
@@ -25,10 +27,10 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
          toolbar = (Toolbar) findViewById(R.id.toolbar);
          tabLayout = (TabLayout) findViewById(R.id.tab_layout);
          viewPager = (ViewPager) findViewById(R.id.pager);
+
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));

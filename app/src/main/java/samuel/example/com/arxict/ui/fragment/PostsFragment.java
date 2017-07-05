@@ -1,4 +1,4 @@
-package samuel.example.com.arxict.ui;
+package samuel.example.com.arxict.ui.fragment;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,21 +32,21 @@ import static samuel.example.com.arxict.utilities.checkInternetConnection;
 public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener
 {
     List<PostContent> postsList ;
-    private RecyclerView mRecyclerView;
+    @BindView(R.id.recycler_view)
+    RecyclerView mRecyclerView;
+    @BindView(R.id.swipe_refresh)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     private PostsAdapter postsAdapter;
-    private SwipeRefreshLayout swipeRefreshLayout;
 
     private String savedInstanceData ="dada";
-   // private ProgressBar progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
          View rootView = inflater.inflate(R.layout.fragment_posts, container, false);
-        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
-        swipeRefreshLayout.setOnRefreshListener(this);
+        ButterKnife.bind(this , rootView);
         swipeRefreshLayout.setRefreshing(true);
         postsAdapter = new PostsAdapter();
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
       onOrientationChange(getResources().getConfiguration().orientation , savedInstanceState);
 
         return rootView ;

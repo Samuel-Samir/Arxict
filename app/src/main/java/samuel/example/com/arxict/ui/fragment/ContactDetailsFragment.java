@@ -1,4 +1,4 @@
-package samuel.example.com.arxict.ui;
+package samuel.example.com.arxict.ui.fragment;
 
 
 import android.content.Intent;
@@ -10,29 +10,40 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.model.ContactData;
 
-import static samuel.example.com.arxict.ui.ContacDtetailsActivity.BUNDLE_DATA;
+import static samuel.example.com.arxict.ui.activity.ContacDtetailsActivity.BUNDLE_DATA;
 
 public class ContactDetailsFragment extends Fragment {
+
     private ContactData contactData;
+    @BindView(R.id.user_name)
+    TextView name;
+
+    @BindView(R.id.phone_num)
+    TextView phone;
+
+    @BindView(R.id.email)
+    TextView email;
+
+    @BindView(R.id.user_pic)
+    ImageView userImg;
+
+    @BindView(R.id.phone_Img)
+    ImageView phoneIcon;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         View rootView = inflater.inflate(R.layout.fragment_contact_details, container, false);
-        TextView name = (TextView) rootView.findViewById(R.id.user_name) ;
-        TextView phone =(TextView) rootView.findViewById(R.id.phone_num);
-        TextView email =(TextView) rootView.findViewById(R.id.email);
-        ImageView userImg = (ImageView) rootView.findViewById(R.id.user_pic);
-        ImageView phoneIcon = (ImageView) rootView.findViewById(R.id.phone_Img);
-
+        View rootView = inflater.inflate(R.layout.fragment_contact_details, container, false);
+        ButterKnife.bind(this ,rootView);
         if (getArguments()!=null && getArguments().getParcelable(BUNDLE_DATA)!=null)
         {
-           contactData = getArguments().getParcelable(BUNDLE_DATA);
+            contactData = getArguments().getParcelable(BUNDLE_DATA);
             name.setText(contactData.getName());
             phone.setText(contactData.getPhone());
             phoneIcon.setOnClickListener(new View.OnClickListener() {

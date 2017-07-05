@@ -11,9 +11,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.model.ContactData;
-import samuel.example.com.arxict.model.PostContent;
 
 /**
  * Created by samuel on 7/5/2017.
@@ -91,19 +92,22 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.Recycle
 
     public class RecyclerViewAdapterHolder extends RecyclerView.ViewHolder {
 
-        private TextView name ;
-        private ImageView user_img ;
-        private ImageView phone_icon ;
-        private LinearLayout holderLinearLayout;
+         @BindView(R.id.text_user)
+         TextView name ;
+
+        @BindView(R.id.user)
+        ImageView user_img ;
+
+        @BindView(R.id.phone)
+        ImageView phone_icon ;
+
+        @BindView(R.id.contact_holder)
+        LinearLayout holderLinearLayout;
 
 
         public RecyclerViewAdapterHolder(View itemView) {
             super(itemView);
-            user_img = (ImageView) itemView.findViewById(R.id.user);
-            name =(TextView) itemView.findViewById(R.id.text_user);
-            phone_icon = (ImageView) itemView.findViewById(R.id.phone);
-            holderLinearLayout =(LinearLayout) itemView.findViewById(R.id.contact_holder) ;
-
+            ButterKnife.bind(this, itemView );
         }
 
     }

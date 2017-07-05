@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.model.PostContent;
 
@@ -54,16 +56,23 @@ public class PostsAdapter  extends RecyclerView.Adapter<PostsAdapter.RecyclerVie
 
     public class RecyclerViewAdapterHolder extends RecyclerView.ViewHolder {
 
-        private TextView post_title ;
-        private TextView post_body ;
-        private TextView user ;
+         @BindView(R.id.post_title)
+         TextView post_title ;
+
+         @BindView(R.id.post_body)
+         TextView post_body ;
+
+        @BindView(R.id.text_user)
+        TextView user ;
 
 
         public RecyclerViewAdapterHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this , itemView);
+            /*
             user = (TextView) itemView.findViewById(R.id.text_user);
             post_title =(TextView) itemView.findViewById(R.id.post_title);
-            post_body =(TextView) itemView.findViewById(R.id.post_body);
+            post_body =(TextView) itemView.findViewById(R.id.post_body);*/
 
         }
 

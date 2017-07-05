@@ -1,4 +1,4 @@
-package samuel.example.com.arxict.ui;
+package samuel.example.com.arxict.ui.fragment;
 
 
 import android.content.Intent;
@@ -7,39 +7,35 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import samuel.example.com.arxict.AccessContacts;
-import samuel.example.com.arxict.ApiInterface;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.adapter.ContactAdapter;
-import samuel.example.com.arxict.adapter.PostsAdapter;
 import samuel.example.com.arxict.model.ContactData;
-import samuel.example.com.arxict.model.PostContent;
+import samuel.example.com.arxict.ui.activity.ContacDtetailsActivity;
 
 
 public class ContactsFragment extends Fragment {
 
-    private RecyclerView mRecyclerView;
+    @BindView(R.id.recycler_view)
+     RecyclerView mRecyclerView;
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+
     private ContactAdapter contactAdapter;
-    private ProgressBar progressBar;
 
     private List<ContactData> contactDataList ;
     private AccessContacts accessContacts ;
@@ -52,10 +48,10 @@ public class ContactsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
          View rootView = inflater.inflate(R.layout.fragment_contacts, container, false);
+         ButterKnife.bind(this , rootView);
+
          accessContacts = new AccessContacts(getActivity().getContentResolver());
-         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         contactAdapter = new ContactAdapter();
-        progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.VISIBLE);
 

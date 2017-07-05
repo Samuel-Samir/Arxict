@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/content_main"
-    tools:context="samuel.example.com.arxict.ui.ContacDtetailsActivity">
+    tools:context="samuel.example.com.arxict.ui.activity.ContacDtetailsActivity">
 
 </android.support.constraint.ConstraintLayout>

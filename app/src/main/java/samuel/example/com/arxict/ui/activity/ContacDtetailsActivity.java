@@ -1,4 +1,4 @@
-package samuel.example.com.arxict.ui;
+package samuel.example.com.arxict.ui.activity;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -7,8 +7,9 @@ import android.os.Bundle;
 
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.model.ContactData;
+import samuel.example.com.arxict.ui.fragment.ContactDetailsFragment;
 
-import static samuel.example.com.arxict.ui.ContactsFragment.CONTACT_OBJECT;
+import static samuel.example.com.arxict.ui.fragment.ContactsFragment.CONTACT_OBJECT;
 
 public class ContacDtetailsActivity extends AppCompatActivity {
     FragmentManager mFragmentManager ;

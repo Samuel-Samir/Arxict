@@ -57,7 +57,7 @@ public class AccessContacts {
 
             while (cursor.moveToNext()) {
                 counter++;
-                if(counter >300)
+                if(counter >200)
                    break;
                 ContactData contactData = new ContactData();
 

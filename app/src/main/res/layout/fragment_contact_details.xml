@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="3"
-    tools:context="samuel.example.com.arxict.ui.ContactDetailsFragment"
+    tools:context="samuel.example.com.arxict.ui.fragment.ContactDetailsFragment"
     android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
