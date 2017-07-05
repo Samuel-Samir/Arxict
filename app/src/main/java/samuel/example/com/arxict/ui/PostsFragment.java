@@ -2,14 +2,18 @@ package samuel.example.com.arxict.ui;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -20,17 +24,25 @@ import samuel.example.com.arxict.adapter.PostsAdapter;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.model.PostContent;
 
+import static samuel.example.com.arxict.utilities.checkInternetConnection;
 
-public class PostsFragment extends Fragment {
+
+public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener
+{
     List<PostContent> postsList ;
     private RecyclerView mRecyclerView;
     private PostsAdapter postsAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
+
+    private String savedInstanceData ="dada";
    // private ProgressBar progressBar;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
          View rootView = inflater.inflate(R.layout.fragment_posts, container, false);
-       // progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        swipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setRefreshing(true);
         postsAdapter = new PostsAdapter();
         mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
       onOrientationChange(getResources().getConfiguration().orientation , savedInstanceState);
@@ -63,30 +75,50 @@ public class PostsFragment extends Fragment {
             mRecyclerView.setAdapter(postsAdapter);
 
         }
-        getData ();
+        getData ( savedInstanceState);
 
     }
 
 
-    private  void getData ()
+    private  void getData (Bundle savedInstanceState)
     {
-        ApiInterface apiService = ApiInterface.ApiClient.getClient().create(ApiInterface.class);
-        Call<List<PostContent>> call = apiService.getPosta();
-        call.enqueue(new Callback<List<PostContent>>() {
-            @Override
-            public void onResponse(Call<List<PostContent>> call, Response<List<PostContent>> response) {
-                postsList = response.body();
-                postsAdapter.setApiResponse(postsList);
+        if (savedInstanceState==null) {
+            if (checkInternetConnection ()) {
+                ApiInterface apiService = ApiInterface.ApiClient.getClient().create(ApiInterface.class);
+                Call<List<PostContent>> call = apiService.getPosta();
+                call.enqueue(new Callback<List<PostContent>>() {
+                    @Override
+                    public void onResponse(Call<List<PostContent>> call, Response<List<PostContent>> response) {
+                        postsList = response.body();
+                        postsAdapter.setApiResponse(postsList);
 
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<PostContent>> call, Throwable t) {
+
+                    }
+                });
             }
+        }
+        else {
+            postsList =  savedInstanceState.getParcelableArrayList(savedInstanceData);
+            postsAdapter.setApiResponse(postsList);
+        }
 
-            @Override
-            public void onFailure(Call<List<PostContent>> call, Throwable t) {
-
-            }
-        });
+        swipeRefreshLayout.setRefreshing(false);
 
 
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(savedInstanceData, (ArrayList<? extends Parcelable>) postsList);
+
+    }
+
+    @Override
+    public void onRefresh() {
+        getData(null);    }
 }

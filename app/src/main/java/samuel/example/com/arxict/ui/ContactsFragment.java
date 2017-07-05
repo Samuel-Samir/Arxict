@@ -5,18 +5,22 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -35,9 +39,13 @@ public class ContactsFragment extends Fragment {
 
     private RecyclerView mRecyclerView;
     private ContactAdapter contactAdapter;
+    private ProgressBar progressBar;
+
     private List<ContactData> contactDataList ;
     private AccessContacts accessContacts ;
     public static String CONTACT_OBJECT="contact";
+    private String savedInstanceData ="dada";
+
 
 
     @Override
@@ -47,6 +55,10 @@ public class ContactsFragment extends Fragment {
          accessContacts = new AccessContacts(getActivity().getContentResolver());
          mRecyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         contactAdapter = new ContactAdapter();
+        progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
+
         onOrientationChange(getResources().getConfiguration().orientation , savedInstanceState);
 
         contactAdapter.setRecyclerItemViewCallback(new ContactAdapter.RecyclerItemViewCallback() {
@@ -71,6 +83,7 @@ public class ContactsFragment extends Fragment {
 
         return rootView ;
     }
+
 
     public void onOrientationChange(int orientation ,  Bundle savedInstanceState){
         int landScape=2;
@@ -97,29 +110,45 @@ public class ContactsFragment extends Fragment {
             mRecyclerView.setAdapter(contactAdapter);
 
         }
-        getData ();
+        getData (savedInstanceState);
 
     }
 
-    private  void getData ()
+    private  void getData ( Bundle savedInstanceState)
     {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                contactDataList = accessContacts.getContacts();
+        if (savedInstanceState == null) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    contactDataList = accessContacts.getContacts();
 
-                getActivity().runOnUiThread(new Runnable() {
+                    getActivity().runOnUiThread(new Runnable() {
 
-                    @Override
-                    public void run() {
-                        contactAdapter.setApiResponse(contactDataList);
-                    }
-                });
+                        @Override
+                        public void run() {
+                            contactAdapter.setApiResponse(contactDataList);
+                            progressBar.setVisibility(View.GONE);
 
-
-            }
-        }).start();
+                        }
+                    });
 
 
+                }
+            }).start();
+        }
+        else {
+            contactDataList =  savedInstanceState.getParcelableArrayList(savedInstanceData);
+            contactAdapter.setApiResponse(contactDataList);
+            progressBar.setVisibility(View.GONE);
+
+        }
+
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(savedInstanceData , (ArrayList<? extends Parcelable>) contactDataList);
     }
 }

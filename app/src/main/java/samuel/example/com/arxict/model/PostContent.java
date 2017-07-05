@@ -1,12 +1,15 @@
 package samuel.example.com.arxict.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by samuel on 7/4/2017.
  */
 
-public class PostContent {
+public class PostContent implements Parcelable {
     @SerializedName("userId")
     private  int userId ;
 
@@ -19,6 +22,25 @@ public class PostContent {
     @SerializedName("body")
     private  String body ;
 
+
+    protected PostContent(Parcel in) {
+        userId = in.readInt();
+        id = in.readInt();
+        title = in.readString();
+        body = in.readString();
+    }
+
+    public static final Creator<PostContent> CREATOR = new Creator<PostContent>() {
+        @Override
+        public PostContent createFromParcel(Parcel in) {
+            return new PostContent(in);
+        }
+
+        @Override
+        public PostContent[] newArray(int size) {
+            return new PostContent[size];
+        }
+    };
 
     public int getUserId() {
         return userId;
@@ -50,6 +72,19 @@ public class PostContent {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(userId);
+        dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(body);
     }
 }
 

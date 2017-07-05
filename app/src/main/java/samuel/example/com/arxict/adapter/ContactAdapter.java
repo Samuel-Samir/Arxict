@@ -59,6 +59,10 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.Recycle
                holder.user_img.setImageBitmap(contactData.getPhoto());
             }
 
+            else
+                holder.user_img.setImageDrawable(holder.user_img.getContext().getResources().getDrawable(R.drawable.user));
+
+
 
             holder.holderLinearLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

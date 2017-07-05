@@ -5,14 +5,27 @@
     tools:context="samuel.example.com.arxict.ui.PostsFragment">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+
+
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:paddingBottom="32dp"
-        android:scrollbarStyle="outsideOverlay" />
+        style="@style/ProgressBarStyle"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="32dp"
+            android:scrollbarStyle="outsideOverlay" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
     <!--
+
 
     <ProgressBar
         android:id="@+id/progressBar"

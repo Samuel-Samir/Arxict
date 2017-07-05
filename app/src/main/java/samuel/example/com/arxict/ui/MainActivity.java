@@ -9,10 +9,14 @@ import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
 
+import samuel.example.com.arxict.ArxictApp;
+import samuel.example.com.arxict.ConnectivityReceiver;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.adapter.ViewPagerAdapter;
 
-public class MainActivity extends AppCompatActivity  {
+import static samuel.example.com.arxict.utilities.showSnackbar;
+
+public class MainActivity extends AppCompatActivity implements ConnectivityReceiver.ConnectivityReceiverListener {
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -69,4 +73,15 @@ public class MainActivity extends AppCompatActivity  {
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        ArxictApp.getInstance().setConnectivityListener(MainActivity.this);
+    }
+
+    @Override
+    public void onNetworkConnectionChanged(boolean isConnected) {
+        showSnackbar(isConnected, findViewById(android.R.id.content), this);
+    }
 }
