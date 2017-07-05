@@ -1,8 +1,6 @@
-package samuel.example.com.arxict;
+package samuel.example.com.arxict.ui;
 
-import android.content.Context;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -11,13 +9,16 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import samuel.example.com.arxict.ApiInterface;
+import samuel.example.com.arxict.adapter.PostsAdapter;
+import samuel.example.com.arxict.R;
+import samuel.example.com.arxict.model.PostContent;
 
 
 public class PostsFragment extends Fragment {

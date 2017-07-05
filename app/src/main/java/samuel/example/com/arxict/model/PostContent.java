@@ -1,4 +1,4 @@
-package samuel.example.com.arxict;
+package samuel.example.com.arxict.model;
 
 import com.google.gson.annotations.SerializedName;
 

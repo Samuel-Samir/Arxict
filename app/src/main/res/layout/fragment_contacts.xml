@@ -1,15 +1,28 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="samuel.example.com.arxict.ContactsFragment">
+    tools:context="samuel.example.com.arxict.ui.PostsFragment">
 
-    <include layout="@layout/contact_item"></include>
-    <include layout="@layout/contact_item"></include>
-    <include layout="@layout/contact_item"></include>
-    <include layout="@layout/contact_item"></include>
-    <include layout="@layout/contact_item"></include>
-    <include layout="@layout/contact_item"></include>
 
-</LinearLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="32dp"
+        android:scrollbarStyle="outsideOverlay" />
+    <!--
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        />
+        -->
+
+
+</FrameLayout>
+

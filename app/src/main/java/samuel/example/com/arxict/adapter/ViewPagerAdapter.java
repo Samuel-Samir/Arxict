@@ -1,4 +1,4 @@
-package samuel.example.com.arxict;
+package samuel.example.com.arxict.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
