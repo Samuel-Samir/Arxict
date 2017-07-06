@@ -1,0 +1,22 @@
+<resources>
+
+    <string name="contacts">جهات الاتصال</string>
+    <string name="post">المنشورات</string>
+    <string name="snackbar_message_connected">متصل</string>
+    <string name="snackbar_message_disconnected">لا يوجد اتصال إنترنت</string>
+    <string name="sing_in">تسجيل الدخول</string>
+    <string name="password">كلمة المرور</string>
+    <string name="email">الايميل</string>
+    <string name="sign_up">سجل</string>
+    <string name="new_user">عميل جديد</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="finish">انهاء</string>
+    <string name="field_required">هذه الخانة مطلوبه</string>
+    <string name="action_log_out">تسجبل الخروج</string>
+    <string name="logIn_error">البريد الإلكتروني أو كلمة السر خاطئة</string>
+    <string name="email_exist">البريد الإلكتروني موجود بالفعل</string>
+    <string name="mobile">التليفون المحمول</string>
+    <string name="no_mail">لا يوجد ميل</string>
+
+
+</resources>

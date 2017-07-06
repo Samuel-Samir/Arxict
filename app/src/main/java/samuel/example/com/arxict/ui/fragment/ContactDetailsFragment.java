@@ -67,7 +67,7 @@ public class ContactDetailsFragment extends Fragment {
             }
             else if (contactData.getEmail()==null)
             {
-                email.setText("No Email");
+                email.setText(getActivity().getResources().getString(R.string.no_mail));
             }
         }
         return rootView;

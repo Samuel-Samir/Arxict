@@ -120,10 +120,7 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
             startActivity(new Intent(this , SignInActivity.class));
             return true;
         }
-        if (id==R.id.action_language)
-        {
-            return true;
-        }
+
 
         return super.onOptionsItemSelected(item);
     }

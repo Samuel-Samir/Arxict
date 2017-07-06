@@ -16,6 +16,7 @@ import samuel.example.com.arxict.model.dataBase.UserDbHelper;
 
 import static samuel.example.com.arxict.utilities.getUserFromDb;
 import static samuel.example.com.arxict.utilities.getUserFromSharedPreferences;
+import static samuel.example.com.arxict.utilities.saveUserToSharedPreferences;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -75,6 +76,7 @@ public class SignInActivity extends AppCompatActivity {
                             Toast.makeText(getBaseContext() ,getResources().getString(R.string.logIn_error) ,Toast.LENGTH_LONG).show();
                         }
                         else {
+                            saveUserToSharedPreferences (userData , getBaseContext());
                             startActivity(new Intent(SignInActivity.this, MainActivity.class));
                         }
                     }

@@ -45,8 +45,8 @@
             android:orientation="horizontal"
             >
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/mid_pic"
+                android:layout_height="@dimen/mid_pic"
                 android:src="@drawable/ic_telephone_icon"
                 android:layout_margin="@dimen/dp_16"
                 android:id="@+id/phone_Img"
@@ -61,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="01201842678"
-                    android:paddingTop="32dp"
+                    android:paddingTop="@dimen/small_pic"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingLeft="@dimen/dp_8"
                     android:id="@+id/phone_num"
@@ -69,7 +69,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mobile"
+                    android:text="@string/mobile"
                     android:paddingTop="@dimen/dp_4"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingLeft="@dimen/dp_8" />
@@ -82,8 +82,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginStart="@dimen/dp_60"
+            android:layout_marginLeft="@dimen/dp_60"
             android:layout_marginTop="@dimen/dp_8"/>
 
 
@@ -94,8 +94,8 @@
             android:orientation="horizontal"
             >
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="@dimen/mid_pic"
+                android:layout_height="@dimen/mid_pic"
                 android:src="@drawable/ic_email"
                 android:layout_margin="@dimen/dp_16"
                 />
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="SamuelSamer952@gmail.com"
-                    android:paddingTop="32dp"
+                    android:paddingTop="@dimen/small_pic"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingLeft="@dimen/dp_8"
                     android:id="@+id/email"
@@ -117,7 +117,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Email"
+                    android:text="@string/email"
                     android:paddingTop="@dimen/dp_4"
                     android:paddingStart="@dimen/dp_8"
                     android:paddingLeft="@dimen/dp_8" />
@@ -130,8 +130,8 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/black"
-            android:layout_marginStart="60dp"
-            android:layout_marginLeft="60dp"
+            android:layout_marginStart="@dimen/dp_60"
+            android:layout_marginLeft="@dimen/dp_60"
             android:layout_marginTop="@dimen/dp_8"/>
 
 
