@@ -1,8 +1,7 @@
 <resources>
-    <string name="app_name">Arxict</string>
+    <string name="app_name" translatable="false">Arxict</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="contacts">Contacts</string>
     <string name="post">Posts</string>
     <string name="snackbar_message_connected">Connected</string>
@@ -23,5 +22,9 @@
     <string name="email_exist">Email is Already Exist</string>
     <string name="mobile">Mobile</string>
     <string name="no_mail">No Email</string>
+    <string name="enter_mail">Enter Email</string>
+    <string name="enter_username">Enter user name</string>
+    <string name="enter_password">Enter user Password</string>
+
 
 </resources>

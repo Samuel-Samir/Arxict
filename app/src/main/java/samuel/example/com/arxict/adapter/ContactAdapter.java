@@ -50,14 +50,16 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.Recycle
 
     @Override
     public void onBindViewHolder(ContactAdapter.RecyclerViewAdapterHolder holder, final int position) {
+
         ContactData contactData =contactDataList.get(position);
         if(contactData.getName() !=null && contactData.getPhone() !=null)
         {
             holder.name.setText(contactData.getName());
+            holder.name.setContentDescription(contactData.getName());
 
             if (contactData.getPhoto() !=null)
             {
-               holder.user_img.setImageBitmap(contactData.getPhoto());
+                holder.user_img.setImageBitmap(contactData.getPhoto());
             }
 
             else
@@ -92,8 +94,8 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.Recycle
 
     public class RecyclerViewAdapterHolder extends RecyclerView.ViewHolder {
 
-         @BindView(R.id.text_user)
-         TextView name ;
+        @BindView(R.id.text_user)
+        TextView name ;
 
         @BindView(R.id.user)
         ImageView user_img ;
@@ -112,10 +114,16 @@ public class ContactAdapter  extends RecyclerView.Adapter<ContactAdapter.Recycle
 
     }
 
+    /**
+     * interface used as a callback for item click
+     */
     public interface RecyclerItemViewCallback {
         void onItemClick(int  position);
     }
 
+    /**
+     * interface used as a callback for item phone call
+     */
     public interface RecyclerPhoneCallback {
         void onItemClick(int  position);
     }

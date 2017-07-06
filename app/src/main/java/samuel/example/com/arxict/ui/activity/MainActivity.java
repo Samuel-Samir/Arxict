@@ -49,6 +49,9 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
 
     }
 
+    /**
+     * this function used to set fragment and initialize Viewpager
+     */
     private  void setFragments ()
     {
         tabLayout.setupWithViewPager(viewPager);
@@ -83,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
         });
     }
 
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -90,6 +95,11 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
         ArxictApp.getInstance().setConnectivityListener(MainActivity.this);
     }
 
+
+    /**
+     * this function is a listener to network change
+     * @param isConnected
+     */
     @Override
     public void onNetworkConnectionChanged(boolean isConnected) {
         showSnackbar(isConnected, findViewById(android.R.id.content), this);
@@ -104,16 +114,14 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_log_out) {
+
+            //re initialize the object with default values
             UserData user = getUserFromSharedPreferences(this);
             if (!user.getUserEmail().equals("-1")) {
-
 
                 user.setUserName("-1");
                 user.setUserEmail("-1");

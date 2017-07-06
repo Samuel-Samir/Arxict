@@ -18,5 +18,9 @@
     <string name="mobile">التليفون المحمول</string>
     <string name="no_mail">لا يوجد ميل</string>
 
+    <string name="enter_mail">ادخل الميل</string>
+    <string name="enter_username">ادخل اسم المستخدم</string>
+    <string name="enter_password">ادخل كلمة المرور</string>
+
 
 </resources>

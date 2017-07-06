@@ -38,14 +38,20 @@ public class ContactDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View rootView = inflater.inflate(R.layout.fragment_contact_details, container, false);
         ButterKnife.bind(this ,rootView);
+
+
         if (getArguments()!=null && getArguments().getParcelable(BUNDLE_DATA)!=null)
         {
             contactData = getArguments().getParcelable(BUNDLE_DATA);
             name.setText(contactData.getName());
+            name.setContentDescription(contactData.getName());
+
             phone.setText(contactData.getPhone());
+            phone.setContentDescription(contactData.getPhone());
+
             phoneIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -58,16 +64,16 @@ public class ContactDetailsFragment extends Fragment {
             if(contactData.getPhoto()!=null)
             {
                 userImg.setImageBitmap(contactData.getPhoto());
-
             }
-
             if(contactData.getEmail()!=null)
             {
                 email.setText(contactData.getEmail());
+                email.setContentDescription(contactData.getEmail());
             }
             else if (contactData.getEmail()==null)
             {
                 email.setText(getActivity().getResources().getString(R.string.no_mail));
+                email.setContentDescription(getActivity().getResources().getString(R.string.no_mail));
             }
         }
         return rootView;

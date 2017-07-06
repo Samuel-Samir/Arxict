@@ -42,7 +42,10 @@ public class PostsAdapter  extends RecyclerView.Adapter<PostsAdapter.RecyclerVie
         PostContent postContent = postContentList.get(position);
         holder.user.setText("User "+String.valueOf(postContent.getUserId()));
         holder.post_title.setText(postContent.getTitle());
+        holder.post_title.setContentDescription(postContent.getTitle());
         holder.post_body.setText(postContent.getBody());
+        holder.post_body.setContentDescription(postContent.getBody());
+
 
     }
 
@@ -56,11 +59,11 @@ public class PostsAdapter  extends RecyclerView.Adapter<PostsAdapter.RecyclerVie
 
     public class RecyclerViewAdapterHolder extends RecyclerView.ViewHolder {
 
-         @BindView(R.id.post_title)
-         TextView post_title ;
+        @BindView(R.id.post_title)
+        TextView post_title ;
 
-         @BindView(R.id.post_body)
-         TextView post_body ;
+        @BindView(R.id.post_body)
+        TextView post_body ;
 
         @BindView(R.id.text_user)
         TextView user ;
@@ -69,10 +72,6 @@ public class PostsAdapter  extends RecyclerView.Adapter<PostsAdapter.RecyclerVie
         public RecyclerViewAdapterHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this , itemView);
-            /*
-            user = (TextView) itemView.findViewById(R.id.text_user);
-            post_title =(TextView) itemView.findViewById(R.id.post_title);
-            post_body =(TextView) itemView.findViewById(R.id.post_body);*/
 
         }
 

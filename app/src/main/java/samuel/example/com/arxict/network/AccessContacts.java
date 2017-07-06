@@ -27,12 +27,16 @@ public class AccessContacts {
    private ContentResolver contentResolver ;
     private Cursor cursor;
     private int counter;
-   // private Handler updateBarHandler;
+
     public  AccessContacts (ContentResolver contentResolver)
     {
         this.contentResolver =contentResolver ;
     }
 
+    /**
+     * getContacts used to get user Contacts
+     * @return List<ContactData>
+     */
 
     public List<ContactData> getContacts(  ) {
         List<ContactData> contactDataList = new ArrayList<>();
@@ -60,15 +64,6 @@ public class AccessContacts {
                 if(counter >200)
                    break;
                 ContactData contactData = new ContactData();
-
-                // Update the progress message
-                /*
-                updateBarHandler.post(new Runnable() {
-                    public void run() {
-                        pDialog.setMessage("Reading contacts : "+ counter++ +"/"+cursor.getCount());
-                    }
-                });
-                */
                 String contact_id = cursor.getString(cursor.getColumnIndex( _ID ));
                 contactData.setPhoto( retrieveContactPhoto (contact_id) );
 
@@ -85,6 +80,7 @@ public class AccessContacts {
                     }
                     phoneCursor.close();
                     contactData.setPhone(phoneNumber);
+
                     // Read every email id associated with the contact
 
                     boolean emailExist=false;
@@ -101,18 +97,23 @@ public class AccessContacts {
                     emailCursor.close();
 
                 }
-                // Add the contact to the ArrayList
+                // check if the contact empty
                 if(name!=null || phoneNumber!= null )
                 {
                     contactDataList.add(contactData);
                 }
-                   // contactList.add(output.toString());
+
             }
         }
 
         return contactDataList ;
     }
 
+    /**
+     * this function used to get user image
+     * @param contactID
+     * @return user image Bitmap
+     */
     private Bitmap retrieveContactPhoto(String contactID ) {
 
         Bitmap photo = null;

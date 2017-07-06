@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="toolbar_height">45dp</dimen>
+    <dimen name="activity_horizontal_margin">25dp</dimen>
+    <dimen name="activity_vertical_margin">25dp</dimen>
+    <dimen name="nav_header_vertical_spacing">25dp</dimen>
+    <dimen name="recycler_view_padding">40dp</dimen>
+    <dimen name="dp_4">8dp</dimen>
+    <dimen name="dp_8">16dp</dimen>
+    <dimen name="dp_10">20dp</dimen>
+
+    <dimen name="dp_16">36dp</dimen>
+    <dimen name="small_pic">48dp</dimen>
+    <dimen name="text_size">30sp</dimen>
+    <dimen name="text_size_1">25sp</dimen>
+    <dimen name="text_size_2">20sp</dimen>
+    <dimen name="mid_pic">55dp</dimen>
+    <dimen name="dp_60">75dp</dimen>
+
+    <dimen name="big_pic">240dp</dimen>
+    <dimen name="round_corner_radius">3dp</dimen>
+    <dimen name="more_space">32dp</dimen>
+    <dimen name="some_space">18dp</dimen>
+    <dimen name="extra_large_text_size">35sp</dimen>
+    <dimen name="mid_text_size">20sp</dimen>
+    <dimen name="little_space">16dp</dimen>
+    <dimen name="large_space">65dp</dimen>
+</resources>

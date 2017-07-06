@@ -33,6 +33,11 @@ public class ConnectivityReceiver  extends BroadcastReceiver {
         }
     }
 
+    /**
+     * this function used to check if network available
+     * @return boolean
+     */
+
     public static boolean isConnected() {
         ConnectivityManager
                 cm = (ConnectivityManager) ArxictApp.getInstance().getApplicationContext()

@@ -32,7 +32,7 @@ import samuel.example.com.arxict.ui.activity.ContacDtetailsActivity;
 public class ContactsFragment extends Fragment {
 
     @BindView(R.id.recycler_view)
-     RecyclerView mRecyclerView;
+    RecyclerView mRecyclerView;
 
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
@@ -49,12 +49,11 @@ public class ContactsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         View rootView = inflater.inflate(R.layout.fragment_contacts, container, false);
-         ButterKnife.bind(this , rootView);
+        View rootView = inflater.inflate(R.layout.fragment_contacts, container, false);
+        ButterKnife.bind(this , rootView);
 
-         accessContacts = new AccessContacts(getActivity().getContentResolver());
+        accessContacts = new AccessContacts(getActivity().getContentResolver());
         contactAdapter = new ContactAdapter();
-        progressBar.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.VISIBLE);
 
 
@@ -84,6 +83,11 @@ public class ContactsFragment extends Fragment {
     }
 
 
+    /**
+     * this function used to check orientation and set layout manager
+     * @param orientation
+     * @param savedInstanceState
+     */
     public void onOrientationChange(int orientation ,  Bundle savedInstanceState){
         int landScape=2;
         int portrait= 1;
@@ -113,6 +117,10 @@ public class ContactsFragment extends Fragment {
 
     }
 
+    /**
+     * get the dada from contacts
+     * @param savedInstanceState
+     */
     private  void getData ( Bundle savedInstanceState)
     {
         if (savedInstanceState == null) {

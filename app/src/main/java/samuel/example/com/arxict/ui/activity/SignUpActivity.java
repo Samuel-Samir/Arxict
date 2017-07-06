@@ -38,6 +38,10 @@ public class SignUpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         ButterKnife.bind(SignUpActivity.this);
 
+        // set Content Description for accessibility
+        userNameEditText.setContentDescription(getResources().getString(R.string.enter_username));
+        emailEditText.setContentDescription(getResources().getString(R.string.enter_mail));
+        passwordEditText.setContentDescription(getResources().getString(R.string.enter_password));
 
         final UserDbHelper userDbHelper = new UserDbHelper(getBaseContext());
         finishButton.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +72,7 @@ public class SignUpActivity extends AppCompatActivity {
                     UserData userData = new UserData(name , email ,pass);
                     double index = utilities.addNewUserTODb(userDbHelper , userData);
 
+                    // if email already exist
                     if (index ==-2)
                     {
                         Toast.makeText(getBaseContext() , getResources().getString(R.string.email_exist) ,Toast.LENGTH_LONG).show();

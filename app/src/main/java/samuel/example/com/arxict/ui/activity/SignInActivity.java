@@ -36,9 +36,15 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
         ButterKnife.bind(SignInActivity.this);
+
+        // set Content Description for accessibility
+        emailEditText.setContentDescription(getResources().getString(R.string.enter_mail));
+        passwordEditText.setContentDescription(getResources().getString(R.string.enter_password));
+
         final UserDbHelper userDbHelper = new UserDbHelper(getBaseContext());
+
+        // get user from Shared Preferences
         UserData userData = getUserFromSharedPreferences (getBaseContext());
         if (userData==null || userData.getUserEmail().equals("-1")) {
 
@@ -54,6 +60,7 @@ public class SignInActivity extends AppCompatActivity {
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     String email  = emailEditText.getText().toString();
                     String password = passwordEditText.getText().toString();
 
@@ -70,6 +77,7 @@ public class SignInActivity extends AppCompatActivity {
                     else
 
                     {
+                        // check the validation of email and password
                         UserData userData = getUserFromDb(userDbHelper , email);
                         if (userData==null || !userData.getUserEmail().equals(email) || !userData.getUserPassword().equals(password))
                         {

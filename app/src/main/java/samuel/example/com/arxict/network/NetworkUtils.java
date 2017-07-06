@@ -20,8 +20,12 @@ public class NetworkUtils{
         private static final String Post_URL ="https://jsonplaceholder.typicode.com/posts";
 
 
+    /**
+     * this function used to build Url
+     * @return URL
+     */
 
-        public static URL buildUrl ()
+    public static URL buildUrl ()
         {
             Uri buildUri = Uri.parse(Post_URL).buildUpon()
                     .build();
@@ -34,6 +38,12 @@ public class NetworkUtils{
             return url;
         }
 
+    /**
+     * this function used to get the data from api as astring
+     * @param url
+     * @return String of data
+     * @throws IOException
+     */
         public static String getResponseFromAPI (URL url) throws IOException
         {
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();

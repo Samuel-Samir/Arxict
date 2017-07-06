@@ -22,11 +22,14 @@ public class ContacDtetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contac_dtetails);
+
+        // check if getIntent value = null
         if (getIntent() != null && getIntent().getParcelableExtra(CONTACT_OBJECT) !=null )
         {
             ContactData contactData = getIntent().getParcelableExtra(CONTACT_OBJECT) ;
             if (contactData!=null)
             {
+                // push ContactDetailsFragment
                 ContactDetailsFragment contactDetailsFragment = new ContactDetailsFragment();
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(BUNDLE_DATA ,contactData );

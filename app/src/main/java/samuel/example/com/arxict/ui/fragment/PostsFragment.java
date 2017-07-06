@@ -8,9 +8,11 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +27,12 @@ import samuel.example.com.arxict.network.PostAsyncTask;
 import static samuel.example.com.arxict.utilities.checkInternetConnection;
 
 
-public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener
+public class PostsFragment extends Fragment
 {
     List<PostContent> postsList ;
     @BindView(R.id.recycler_view)
     RecyclerView mRecyclerView;
-    @BindView(R.id.swipe_refresh)
-    SwipeRefreshLayout swipeRefreshLayout;
+
 
     private PostsAdapter postsAdapter;
 
@@ -39,15 +40,19 @@ public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-         View rootView = inflater.inflate(R.layout.fragment_posts, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_posts, container, false);
         ButterKnife.bind(this , rootView);
-        swipeRefreshLayout.setRefreshing(true);
         postsAdapter = new PostsAdapter();
-      onOrientationChange(getResources().getConfiguration().orientation , savedInstanceState);
+        onOrientationChange(getResources().getConfiguration().orientation , savedInstanceState);
 
         return rootView ;
     }
 
+    /**
+     * this function used to check orientation and set layout manager
+     * @param orientation
+     * @param savedInstanceState
+     */
     public void onOrientationChange(int orientation ,  Bundle savedInstanceState){
         int landScape=2;
         int portrait= 1;
@@ -77,7 +82,10 @@ public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
     }
 
-
+    /**
+     * get the dada from api
+     * @param savedInstanceState
+     */
     private  void getData (Bundle savedInstanceState)
     {
         if (savedInstanceState==null) {
@@ -100,8 +108,6 @@ public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefr
             postsAdapter.setApiResponse(postsList);
         }
 
-        swipeRefreshLayout.setRefreshing(false);
-
 
     }
 
@@ -112,7 +118,6 @@ public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefr
 
     }
 
-    @Override
-    public void onRefresh() {
-        getData(null);    }
+
+
 }

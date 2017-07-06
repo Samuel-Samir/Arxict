@@ -18,6 +18,11 @@ public class UserDbHelper   extends SQLiteOpenHelper {
         super(context , DATABASE_NAME , null , DATABASE_VERSION);
 
     }
+
+    /**
+     * Create Table
+     * @param db
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         final String SQL_CREATE_PHOTO_TABLE = "CREATE TABLE " + UserInfo.TABLE_NAME + " ( "+
@@ -30,6 +35,12 @@ public class UserDbHelper   extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * "DROP TABLE
+     * @param db
+     * @param oldVersion
+     * @param newVersion
+     */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + UserInfo.TABLE_NAME );
