@@ -2,6 +2,8 @@ package samuel.example.com.arxict;
 
 import android.app.Application;
 
+import samuel.example.com.arxict.network.ConnectivityReceiver;
+
 /**
  * Created by samuel on 7/5/2017.
  */

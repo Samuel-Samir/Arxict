@@ -14,4 +14,13 @@
     <string name="new_user">New User</string>
     <string name="username">User Name</string>
     <string name="finish">Finish</string>
+    <string name="shared_pref_signed_in_user"  translatable="false" >SignedInUser</string>
+    <string name="shared_pref_signed_in_user_name" translatable="false" >SignedInUserName </string>
+    <string name="shared_pref_signed_in_user_email" translatable="false" >SignedInUserEmail</string>
+    <string name="field_required">This field is required</string>
+    <string name="action_log_out">Log Out</string>
+    <string name="action_language">Language</string>
+    <string name="logIn_error">Invalid Email or Password</string>
+    <string name="email_exist">Email is Already Exist</string>
+
 </resources>

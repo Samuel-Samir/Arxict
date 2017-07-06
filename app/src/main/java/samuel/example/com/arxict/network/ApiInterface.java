@@ -1,4 +1,4 @@
-package samuel.example.com.arxict;
+package samuel.example.com.arxict.network;
 
 import java.util.List;
 

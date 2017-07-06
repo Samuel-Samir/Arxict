@@ -1,10 +1,12 @@
-package samuel.example.com.arxict;
+package samuel.example.com.arxict.network;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+
+import samuel.example.com.arxict.ArxictApp;
 
 /**
  * Created by samuel on 7/5/2017.

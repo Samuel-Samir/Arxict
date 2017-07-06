@@ -20,7 +20,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import samuel.example.com.arxict.AccessContacts;
+import samuel.example.com.arxict.network.AccessContacts;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.adapter.ContactAdapter;
 import samuel.example.com.arxict.model.ContactData;

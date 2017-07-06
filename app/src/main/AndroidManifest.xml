@@ -21,7 +21,7 @@
         <activity android:name=".ui.activity.ContacDtetailsActivity" />
 
         <receiver
-            android:name=".ConnectivityReceiver"
+            android:name=".network.ConnectivityReceiver"
             android:enabled="true">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
