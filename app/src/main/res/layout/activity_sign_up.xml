@@ -45,13 +45,15 @@
                 android:id="@+id/sign_up_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/mid_text_size"
+                android:textSize="@dimen/text_size"
                 android:textColor="@color/dark_grey"
-                android:padding="@dimen/some_space"
+                android:padding="@dimen/dp_16"
                 android:hint="@string/username"
                 android:textColorHint="@color/light_grey"
                 android:background="@drawable/top_rounded_corners"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress"
+                android:textCursorDrawable="@drawable/color_cursor"
+                />
 
             <EditText
                 android:layout_marginTop="1dp"
@@ -59,26 +61,31 @@
                 android:id="@+id/sign_up_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/mid_text_size"
+                android:textSize="@dimen/text_size"
                 android:textColor="@color/dark_grey"
-                android:padding="@dimen/some_space"
+                android:padding="@dimen/dp_16"
                 android:hint="@string/email"
                 android:textColorHint="@color/light_grey"
                 android:background="@color/colorAccent"
-                android:inputType="textEmailAddress"/>
+                android:inputType="textEmailAddress"
+                android:textCursorDrawable="@drawable/color_cursor"
+
+                />
 
             <EditText
                 android:layout_marginTop="1dp"
                 android:id="@+id/sign_up_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/mid_text_size"
-                android:padding="@dimen/some_space"
+                android:textSize="@dimen/text_size"
+                android:padding="@dimen/dp_16"
                 android:hint="@string/password"
                 android:textColorHint="@color/light_grey"
                 android:textColor="@color/dark_grey"
                 android:background="@drawable/bottom_rounded_corners"
                 android:inputType="textPassword"
+                android:textCursorDrawable="@drawable/color_cursor"
+
                 android:gravity="start"/>
 
             <Button
@@ -90,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/green_button"
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/mid_text_size"
+                android:textSize="@dimen/text_size"
                 android:text="@string/finish"
                 android:textAllCaps="false" />
 

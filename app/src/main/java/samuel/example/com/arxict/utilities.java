@@ -3,6 +3,7 @@ package samuel.example.com.arxict;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.Snackbar;
@@ -26,6 +27,12 @@ public class utilities {
         return ConnectivityReceiver.isConnected();
     }
 
+    /**
+     * this function used to control the showSnackbar
+     * @param isConnected
+     * @param view
+     * @param context
+     */
     public static void showSnackbar(boolean isConnected, View view, Context context) {
         if (isConnected) {
             showSnackbarConnected(view, context);
@@ -34,6 +41,12 @@ public class utilities {
         }
     }
 
+
+    /**
+     * this function used to connected Snackbar
+     * @param view
+     * @param context
+     */
     private static void showSnackbarConnected(View view, Context context) {
         Snackbar snackbar = Snackbar.make(view, R.string.snackbar_message_connected, Snackbar.LENGTH_LONG);
         View sbView = snackbar.getView();
@@ -41,6 +54,11 @@ public class utilities {
         snackbar.show();
     }
 
+    /**
+     * this function used to Disconnected Snackbar
+     * @param view
+     * @param context
+     */
     public static void showSnackbarDisconnected(View view, Context context) {
         Snackbar snackbar = Snackbar.make(view, R.string.snackbar_message_disconnected, Snackbar.LENGTH_INDEFINITE);
         View sbView = snackbar.getView();
@@ -48,6 +66,12 @@ public class utilities {
         snackbar.show();
     }
 
+    /**
+     * this function used to add new user to db
+     * @param userDbHelper
+     * @param userData
+     * @return index of new user
+     */
     public static double addNewUserTODb(final UserDbHelper userDbHelper, final UserData userData )
     {
 
@@ -67,6 +91,12 @@ public class utilities {
 
     }
 
+    /**
+     * this function used to get new user from db
+     * @param userDbHelper
+     * @param email
+     * @return user data
+     */
     public static UserData getUserFromDb (final UserDbHelper userDbHelper , final String email)
     {
 
@@ -105,6 +135,11 @@ public class utilities {
 
     }
 
+    /**
+     * this function used to add  user to Shared Preferences
+     * @param user
+     * @param context
+     */
     public static void saveUserToSharedPreferences(UserData user, Context context) {
 
         SharedPreferences.Editor editor = context.getSharedPreferences(context.getString(R.string.shared_pref_signed_in_user), Context.MODE_PRIVATE).edit();
@@ -115,6 +150,11 @@ public class utilities {
 
     }
 
+    /**
+     * this function used to get user from Shared Preferences
+     * @param context
+     * @return
+     */
     public static UserData getUserFromSharedPreferences(Context context) {
         UserData user = new UserData();
         SharedPreferences sharedPref = context.getSharedPreferences(context.getString(R.string.shared_pref_signed_in_user), Context.MODE_PRIVATE);
@@ -122,6 +162,17 @@ public class utilities {
         user.setUserEmail(sharedPref.getString(context.getString(R.string.shared_pref_signed_in_user_email), "-1"));
         user.setUserName(sharedPref.getString(context.getString(R.string.shared_pref_signed_in_user_name), "-1"));
         return user;
+    }
+
+    /**
+     * this function used to check is phone tablet or phone
+     * @param context
+     * @return boolean is Tablet
+     */
+    public static boolean isTablet(Context context) {
+        boolean xlarge = ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_XLARGE);
+        boolean large = ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) == Configuration.SCREENLAYOUT_SIZE_LARGE);
+        return (xlarge || large);
     }
 
 }

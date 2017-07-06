@@ -28,6 +28,8 @@ import samuel.example.com.arxict.model.ContactData;
 import samuel.example.com.arxict.network.PostAsyncTask;
 import samuel.example.com.arxict.ui.activity.ContacDtetailsActivity;
 
+import static samuel.example.com.arxict.utilities.isTablet;
+
 
 public class ContactsFragment extends Fragment {
 
@@ -94,13 +96,12 @@ public class ContactsFragment extends Fragment {
         DisplayMetrics metrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        int widthPixels = metrics.widthPixels;
-        int heightPixels = metrics.heightPixels;
-        if (widthPixels>=1023 || heightPixels>=1023)
+        if (isTablet(getActivity()))
         {
             landScape=3;
             portrait=2;
         }
+
 
         if(orientation == Configuration.ORIENTATION_PORTRAIT){
             mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(portrait, StaggeredGridLayoutManager.VERTICAL ));
