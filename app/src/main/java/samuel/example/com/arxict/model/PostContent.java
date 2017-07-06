@@ -3,26 +3,20 @@ package samuel.example.com.arxict.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by samuel on 7/4/2017.
  */
 
 public class PostContent implements Parcelable {
-    @SerializedName("userId")
+
     private  int userId ;
-
-    @SerializedName("id")
     private  int id ;
-
-    @SerializedName("title")
     private  String title ;
-
-    @SerializedName("body")
     private  String body ;
 
 
+    public PostContent (){}
     protected PostContent(Parcel in) {
         userId = in.readInt();
         id = in.readInt();

@@ -20,10 +20,12 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import samuel.example.com.arxict.model.PostContent;
 import samuel.example.com.arxict.network.AccessContacts;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.adapter.ContactAdapter;
 import samuel.example.com.arxict.model.ContactData;
+import samuel.example.com.arxict.network.PostAsyncTask;
 import samuel.example.com.arxict.ui.activity.ContacDtetailsActivity;
 
 
@@ -54,6 +56,7 @@ public class ContactsFragment extends Fragment {
         contactAdapter = new ContactAdapter();
         progressBar.setVisibility(View.VISIBLE);
         progressBar.setVisibility(View.VISIBLE);
+
 
         onOrientationChange(getResources().getConfiguration().orientation , savedInstanceState);
 

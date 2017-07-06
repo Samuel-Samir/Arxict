@@ -17,13 +17,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import samuel.example.com.arxict.network.ApiInterface;
 import samuel.example.com.arxict.adapter.PostsAdapter;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.model.PostContent;
+import samuel.example.com.arxict.network.PostAsyncTask;
 
 import static samuel.example.com.arxict.utilities.checkInternetConnection;
 
@@ -85,21 +82,17 @@ public class PostsFragment extends Fragment implements SwipeRefreshLayout.OnRefr
     {
         if (savedInstanceState==null) {
             if (checkInternetConnection ()) {
-                ApiInterface apiService = ApiInterface.ApiClient.getClient().create(ApiInterface.class);
-                Call<List<PostContent>> call = apiService.getPosta();
-                call.enqueue(new Callback<List<PostContent>>() {
+
+                PostAsyncTask postAsyncTask =new PostAsyncTask();
+                postAsyncTask.setFetchPostAsyncTaskCallBack(new PostAsyncTask.FetchPostAsyncTaskCallBack() {
                     @Override
-                    public void onResponse(Call<List<PostContent>> call, Response<List<PostContent>> response) {
-                        postsList = response.body();
+                    public void onPostExecute(List<PostContent> postContents) {
+                        postsList =postContents ;
                         postsAdapter.setApiResponse(postsList);
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<PostContent>> call, Throwable t) {
-
                     }
                 });
+                postAsyncTask.execute();
+
             }
         }
         else {

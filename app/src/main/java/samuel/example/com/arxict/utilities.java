@@ -121,8 +121,6 @@ public class utilities {
 
         user.setUserEmail(sharedPref.getString(context.getString(R.string.shared_pref_signed_in_user_email), "-1"));
         user.setUserName(sharedPref.getString(context.getString(R.string.shared_pref_signed_in_user_name), "-1"));
-
-
         return user;
     }
 

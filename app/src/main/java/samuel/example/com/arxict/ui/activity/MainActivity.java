@@ -17,6 +17,7 @@ import samuel.example.com.arxict.network.ConnectivityReceiver;
 import samuel.example.com.arxict.R;
 import samuel.example.com.arxict.adapter.ViewPagerAdapter;
 import samuel.example.com.arxict.model.UserData;
+import samuel.example.com.arxict.network.PostAsyncTask;
 import samuel.example.com.arxict.ui.fragment.ContactsFragment;
 import samuel.example.com.arxict.ui.fragment.PostsFragment;
 
@@ -42,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
             toolbar.setTitleTextColor(getResources().getColor(R.color.colorAccent));
 
         }
+
 
         setFragments () ;
 
