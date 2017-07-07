@@ -35,7 +35,7 @@ public class PostAsyncTask extends AsyncTask<String ,Void ,List<PostContent> > {
 
             String jasonResponse =NetworkUtils.getResponseFromAPI(postUrlRequest);
             JSONArray jsonArray = new JSONArray(jasonResponse);
-            int listSize  = jsonArray.length();
+            int listSize  = jsonArray.length() -1;
             List <PostContent> postContents = new ArrayList<PostContent>();
             for (int i=0 ;i<listSize ;i++)
             {

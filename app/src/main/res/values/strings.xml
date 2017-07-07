@@ -25,6 +25,8 @@
     <string name="enter_mail">Enter Email</string>
     <string name="enter_username">Enter user name</string>
     <string name="enter_password">Enter user Password</string>
+    <string name="no_post">No posts, please try again later</string>
+    <string name="refresh">Refresh</string>
 
 
 </resources>

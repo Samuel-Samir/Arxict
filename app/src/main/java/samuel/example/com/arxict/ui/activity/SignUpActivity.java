@@ -81,6 +81,7 @@ public class SignUpActivity extends AppCompatActivity {
                     {
                         saveUserToSharedPreferences (userData , getBaseContext());
                         startActivity(new Intent(SignUpActivity.this , MainActivity.class));
+                        SignUpActivity.this.finish();
 
                     }
 

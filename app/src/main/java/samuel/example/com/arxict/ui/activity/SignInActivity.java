@@ -53,6 +53,8 @@ public class SignInActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
                     startActivity(new Intent(SignInActivity.this, SignUpActivity.class));
+                    SignInActivity.this.finish();
+
 
                 }
             });
@@ -86,6 +88,7 @@ public class SignInActivity extends AppCompatActivity {
                         else {
                             saveUserToSharedPreferences (userData , getBaseContext());
                             startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                            SignInActivity.this.finish();
                         }
                     }
 
@@ -94,6 +97,8 @@ public class SignInActivity extends AppCompatActivity {
         }
         else  {
             startActivity(new Intent(SignInActivity.this, MainActivity.class));
+            SignInActivity.this.finish();
+
 
         }
     }

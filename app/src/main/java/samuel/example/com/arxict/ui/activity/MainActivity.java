@@ -21,6 +21,7 @@ import samuel.example.com.arxict.network.PostAsyncTask;
 import samuel.example.com.arxict.ui.fragment.ContactsFragment;
 import samuel.example.com.arxict.ui.fragment.PostsFragment;
 
+import static samuel.example.com.arxict.utilities.checkInternetConnection;
 import static samuel.example.com.arxict.utilities.getUserFromSharedPreferences;
 import static samuel.example.com.arxict.utilities.saveUserToSharedPreferences;
 import static samuel.example.com.arxict.utilities.showSnackbar;
@@ -46,6 +47,9 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
 
 
         setFragments () ;
+        if (checkInternetConnection ()==false)
+           showSnackbar(checkInternetConnection (), findViewById(android.R.id.content), this);
+
 
     }
 
@@ -58,13 +62,13 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
         ViewPagerAdapter customAdapter = new ViewPagerAdapter( getSupportFragmentManager()  );
 
         ArrayList<String> fragmentsNames = new ArrayList<>();
-        fragmentsNames.add(getResources().getString(R.string.contacts));
         fragmentsNames.add(getResources().getString(R.string.post));
+        fragmentsNames.add(getResources().getString(R.string.contacts));
 
 
         ArrayList<Fragment> fragmentsList =new ArrayList<>();
-        fragmentsList.add(new ContactsFragment());
         fragmentsList.add(new PostsFragment());
+        fragmentsList.add(new ContactsFragment());
         customAdapter.setData(fragmentsNames ,fragmentsList);
 
         viewPager.setAdapter(customAdapter);
@@ -128,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements ConnectivityRecei
                 saveUserToSharedPreferences(user, this);
             }
             startActivity(new Intent(this , SignInActivity.class));
+            MainActivity.this.finish();
             return true;
         }
 

@@ -98,7 +98,7 @@ public class ContactsFragment extends Fragment {
 
         if (isTablet(getActivity()))
         {
-            landScape=3;
+            landScape=2;
             portrait=2;
         }
 
