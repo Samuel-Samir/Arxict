@@ -24,7 +24,7 @@ import samuel.example.com.arxict.model.ContactData;
 public class AccessContacts {
 
 
-   private ContentResolver contentResolver ;
+    private ContentResolver contentResolver ;
     private Cursor cursor;
     private int counter;
 

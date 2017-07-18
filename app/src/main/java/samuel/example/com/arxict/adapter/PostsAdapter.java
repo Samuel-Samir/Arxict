@@ -18,7 +18,7 @@ import samuel.example.com.arxict.model.PostContent;
  * Created by samuel on 7/4/2017.
  */
 
-public class PostsAdapter  extends RecyclerView.Adapter<PostsAdapter.RecyclerViewAdapterHolder>{
+public class PostsAdapter   extends RecyclerView.Adapter<PostsAdapter.RecyclerViewAdapterHolder>{
 
     List<PostContent> postContentList ;
     public void setApiResponse (List<PostContent> postContentList )
